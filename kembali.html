@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #guestbook {
+            margin-top: 20px;
+        }
+        .entry {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Buku Tamu</h1>
+    <form id="guestbookForm">
+        <input type="text" id="name" placeholder="Nama" required>
+        <textarea id="message" placeholder="Pesan" required></textarea>
+        <button type="submit">Kirim</button>
+    </form>
+    
+    <div id="guestbook"></div>
+
+    <script>
+        const form = document.getElementById('guestbookForm');
+        const guestbook = document.getElementById('guestbook');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            const entry = document.createElement('div');
+            entry.className = 'entry';
+            entry.innerHTML = `<strong>${name}</strong>: ${message}`;
+
+            guestbook.appendChild(entry);
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
